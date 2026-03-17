@@ -1,14 +1,28 @@
 {
   "name": "Google News Width Fixer",
   "description": "Makes sure news fills the entire screen on Google News.",
-  "version": "1.0",
+  "version": "1.1.0",
   "manifest_version": 3,
+  "permissions": ["storage", "tabs", "scripting"],
+  "action": {
+    "default_popup": "extension_ui/popup.html"
+  },
+   "icons": {
+    "128": "icon.png"
+  },
+
   "content_scripts": [
     {
       "matches": ["https://news.google.com/*"],
-      "css": ["styles.css"],
+      "css": ["content_scripts/styles.css"],
+      "js": ["content_scripts/css.js", "content_scripts/content.js"],
       "run_at": "document_start"
     }
   ],
-  "host_permissions": ["https://news.google.com/*"]
+  "host_permissions": ["https://news.google.com/*"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "kye.urgolites@gmail.com"
+    }
+  }
 }
